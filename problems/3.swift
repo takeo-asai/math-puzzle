@@ -24,6 +24,6 @@ for n in 2 ... cards.count {
 }
 
 cards = cards.filter { card in !card.status }
-print(cards.flatMap{$0.index})
+print(cards.flatMap { $0.index })
 
 // i*n -1
