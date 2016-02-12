@@ -1,6 +1,6 @@
-struct Q1 {
+struct Question1 {
 	let value: Int
-	let bases = [2,8,10]
+	let bases = [2, 8, 10]
 	init(_ v: Int) {
 		value = v
 	}
@@ -24,15 +24,10 @@ struct Q1 {
 	}
 }
 
-
 for i in 10 ..< 1000 {
-	if Q1(i).palindromedALL() {
+	if Question1(i).palindromedALL() {
 		print("- \(i):")
-		print("\t \(Q1(i).radix(2))[2]")
-		print("\t \(Q1(i).radix(8))[8]")
+		print("\t \(Question1(i).radix(2))[2]")
+		print("\t \(Question1(i).radix(8))[8]")
 	}
 }
-
-
-
-
