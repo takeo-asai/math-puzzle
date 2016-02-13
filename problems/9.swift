@@ -117,4 +117,3 @@ let group = males + females
 // とても遅いが動く！30! > 10^32
 let count = group.permutation(group.count).map { isBalanced($0) }.reduce(0) { $0 + ($1 ? 0 : 1) }
 print(count)
-

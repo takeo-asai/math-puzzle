@@ -25,4 +25,3 @@ for n in 2 ... 36 {
 	}
 }
 print(count)
-
