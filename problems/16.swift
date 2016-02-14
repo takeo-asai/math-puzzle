@@ -16,7 +16,7 @@ for length in 8 ... 500 {
 	let c2 = Double(length/4) * Double(length/4)
 	for a2 in sqrts.filter({$0 < c2}) {
 		let b2 = c2 - a2
-		if a2 < b2 && isCreatable(a2,length) && isCreatable(b2, length) && sqrts.contains(b2) {
+		if a2 < b2 && isCreatable(a2, length) && isCreatable(b2, length) && sqrts.contains(b2) {
 			count++
 			list += [[a2, b2, c2]]
 		}
