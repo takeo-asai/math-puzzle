@@ -135,5 +135,3 @@ for a in Array((0 ... 9)).permutation(10) {
 	}
 }
 print(count)
-
-
