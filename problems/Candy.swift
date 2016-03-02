@@ -7,14 +7,14 @@ func * (lhs: [Int], var rhs: Int) -> [Int] {
   return next
 }
 
-class Candy {
+class BinaryTree {
   var value: Int
-  var R: Candy?
-  var L: Candy?
-  var parent: Candy?
+  var R: BinaryTree?
+  var L: BinaryTree?
+  var parent: BinaryTree?
   var count: Int
 
-  init(_ v: Int, _ p: Candy? = nil) {
+  init(_ v: Int, _ p: BinaryTree? = nil) {
     self.value = v
     self.count = 1
     self.parent = p
@@ -24,7 +24,7 @@ class Candy {
       if let l = self.L {
         l.insert(n)
       } else {
-        self.L = Candy(n, self)
+        self.L = BinaryTree(n, self)
       }
     } else if n == self.value {
       self.count += 1
@@ -32,7 +32,7 @@ class Candy {
       if let r = self.R {
         r.insert(n)
       } else {
-        self.R = Candy(n, self)
+        self.R = BinaryTree(n, self)
       }
     }
   }
@@ -61,13 +61,13 @@ class Candy {
       return left
     }
   }
-  func maximum() -> Candy {
+  func maximum() -> BinaryTree {
     if let r = self.R {
       return r.maximum()
     }
     return self
   }
-  func replace(tree: Candy, with: Candy?) {
+  func replace(tree: BinaryTree, with: BinaryTree?) {
     if tree.value == self.R?.value {
       self.R = with
       with?.parent = self.R
@@ -84,6 +84,20 @@ class Candy {
       }
     } else if n == self.value {
       self.count -= 1
+      if self.count == 0 {
+        if let l = self.L, _ = self.R { // both
+          let maxValue = l.maximum().value
+          self.value = maxValue
+          self.count = 1
+          l.remove(maxValue)
+        } else if let l = self.L { // L only
+          self.parent?.replace(self, with: l)
+        } else if let r = self.R { // R only
+          self.parent?.replace(self, with: r)
+        } else {
+          self.parent?.replace(self, with: nil)
+        }
+      }
     } else {
       if let r = self.R {
         r.remove(n)
